@@ -1,5 +1,13 @@
-# Default ignored files
+# Default ignored files (Keep these!)
 /shelf/
 /workspace.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+
+# --- ADD THESE FOR YOUR PYTHON PROJECT ---
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.DS_Store
