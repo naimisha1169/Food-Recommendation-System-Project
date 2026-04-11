@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regional and Calorie Based Food Recommendation System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-orange: #e67e22;
+            --deep-green: #27ae60;
+            --light-bg: #fdfaf6;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: white;
+            border-bottom: 2px solid var(--primary-orange);
+            padding: 1rem 2rem;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+            color: white;
+            padding: 60px 0;
+            border-radius: 0 0 50px 50px;
+            margin-bottom: 20px;
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 20px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-top: -30px;
+            /* Pulls card up into the hero section slightly */
+        }
+
+        .btn-recommend {
+            background-color: var(--deep-green) !important;
+            border: none !important;
+            color: white !important;
+            font-weight: bold;
+            padding: 15px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+        }
+
+        .btn-recommend:hover {
+            background-color: #219150 !important;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+        }
+
+        label {
+            color: #2c3e50;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-light">
+        <span class="navbar-brand mb-0 h1" style="color:var(--primary-orange); font-weight: bold;">
+            🍛 Regional Food AI
+        </span>
+    </nav>
+
+    <div class="hero-section text-center">
+        <h1>Regional and Calorie Based Food Recommendation System</h1>
+        <p class="lead">Personalized Indian Cuisine & Nutrition Analysis</p>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="form-card">
+                    <form action="/recommend" method="POST" class="bg-white p-4 rounded shadow-sm">
+
+                        <h5 class="fw-bold mb-3">1. Physical Profile</h5>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-3">
+                                <label class="form-label">Age</label>
+                                <input type="number" name="age" class="form-control" placeholder="Years" required
+                                    min="1" max="120">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Weight (kg)</label>
+                                <input type="number" name="weight" class="form-control" placeholder="kg" required
+                                    min="10">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Gender</label>
+                                <select name="gender" class="form-select">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Activity Level</label>
+                                <select name="activity" class="form-select">
+                                    <option value="1.2">Sedentary (Office job)</option>
+                                    <option value="1.5">Moderate (Exercise 3x week)</option>
+                                    <option value="1.8">Active (Daily exercise)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <h5 class="fw-bold mb-3">2. Preferences</h5>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Max Spice Tolerance: <span id="spiceVal">2</span>/5</label>
+                                <input type="range" name="spice" class="form-range" min="1" max="5" step="1" value="2"
+                                    oninput="document.getElementById('spiceVal').innerText = this.value">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Region</label>
+                                <select name="region" class="form-select">
+                                    <option value="All">Any Region</option>
+                                    <option value="North">North Indian</option>
+                                    <option value="South">South Indian</option>
+                                    <option value="Bengali">Bengali</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Diet</label>
+                                <select name="diet" class="form-select">
+                                    <option value="All">Any Diet</option>
+                                    <option value="Vegetarian">Vegetarian</option>
+                                    <option value="Non-Vegetarian">Non-Vegetarian</option>
+                                    <option value="Vegan">Vegan</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <h5 class="fw-bold mb-3">3. Allergies</h5>
+                        <div class="d-flex gap-3 mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="allergies" value="Dairy"
+                                    id="dairy">
+                                <label class="form-check-label" for="dairy">Dairy</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="allergies" value="Gluten"
+                                    id="gluten">
+                                <label class="form-check-label" for="gluten">Gluten</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">Generate My AI Menu</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
