@@ -7,19 +7,19 @@ The application uses the **Mifflin-St Jeor Equation** to calculate a target calo
 
 ## Core Features
 
-~~ **Biometric TDEE Calculator:** Automatically estimates daily energy expenditure and breaks it down to target meal metrics based on age, weight, gender, and activity factor.
-~~ **Weighted Recommendation Engine:** Instead of using rigid "yes/no" database filters that often return zero results, the system calculates a mismatch penalty score to rank dishes, ensuring a "nearest best fit" fallback is always available.
-~~ **Allergy Guard:** Implements a strict boolean safety filter that completely omits any dish containing user-specified allergens.
-~~ **Regional & Dietary Segmentation:** Specifically tailored for Indian culinary contexts, organizing data across regions (North, South, East, West) and diet types (Veg, Non-Veg).
-~~ **Serverless Deployment:** Structured to run efficiently on cloud platforms like Vercel using serverless functions.
+* **Biometric TDEE Calculator:** Automatically estimates daily energy expenditure and breaks it down to target meal metrics based on age, weight, gender, and activity factor.
+* **Weighted Recommendation Engine:** Instead of using rigid "yes/no" database filters that often return zero results, the system calculates a mismatch penalty score to rank dishes, ensuring a "nearest best fit" fallback is always available.
+* **Allergy Guard:** Implements a strict boolean safety filter that completely omits any dish containing user-specified allergens.
+* **Regional & Dietary Segmentation:** Specifically tailored for Indian culinary contexts, organizing data across regions (North, South, East, West) and diet types (Veg, Non-Veg).
+* **Serverless Deployment:** Structured to run efficiently on cloud platforms like Vercel using serverless functions.
 
 
 ## Technology Stack
 
-~~ **Backend:** Python, Flask (WSGI Framework)
-~~ **Frontend:** HTML5, CSS3, Bootstrap 5 (Responsive Layout)
-~~ **Data Layer:** Structured JSON (`dishes.json)
-~~ **Deployment:** Vercel, GitHub (Continuous Integration)
+* **Backend:** Python, Flask (WSGI Framework)
+* **Frontend:** HTML5, CSS3, Bootstrap 5 (Responsive Layout)
+* **Data Layer:** Structured JSON (`dishes.json)
+* **Deployment:** Vercel, GitHub (Continuous Integration)
 
 
 ## Project Structure
@@ -48,10 +48,10 @@ To rank dishes, the engine calculates a total score where **lower scores indicat
 
   Score = |Dish Calories - Meal Target| + Penalties
 
-~~ **Diet Type Mismatch:** $+1000$ penalty points.
-~~ **Spice Level Exceeded:** $+500$ penalty points.
-~~ **Region Mismatch:** $+200$ penalty points.
-~~ *Note: If an item triggers an allergen match, it bypasses the scoring loop entirely and is omitted.*
+* **Diet Type Mismatch:** $+1000$ penalty points.
+* **Spice Level Exceeded:** $+500$ penalty points.
+* **Region Mismatch:** $+200$ penalty points.
+* *Note: If an item triggers an allergen match, it bypasses the scoring loop entirely and is omitted.*
 
 
 ## Data Architecture and Pipeline
