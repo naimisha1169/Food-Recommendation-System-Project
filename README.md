@@ -24,13 +24,13 @@ The application uses the **Mifflin-St Jeor Equation** to calculate a target calo
 
 ## Project Structure
 
-├── app.py                 # Core Flask application & routing logic
-├── dishes.json            # Database containing dish metrics, regions, and allergens
-├── templates/
-│   ├── index.html         # User onboarding and biometric entry form
-│   └── results.html       # Dynamic recommendations and progress bar visualization
-├── requirements.txt       # Project dependencies
-└── vercel.json            # Serverless deployment configuration
+*├── app.py                 # Core Flask application & routing logic
+*├── dishes.json            # Database containing dish metrics, regions, and allergens
+*├── templates/
+*│   ├── index.html         # User onboarding and biometric entry form
+*│   └── results.html       # Dynamic recommendations and progress bar visualization
+*├── requirements.txt       # Project dependencies
+*└── vercel.json            # Serverless deployment configuration
 
 
 ## The Algorithm Explained
