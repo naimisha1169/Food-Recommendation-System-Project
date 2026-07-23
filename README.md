@@ -59,3 +59,7 @@ To rank dishes, the engine calculates a total score where **lower scores indicat
 The project operates as a lightweight data pipeline. While initial raw food metrics can be managed in flat CSV spreadsheets for easy manual data entry, the live application relies on a structured JSON format (`dishes.json`).
 
 JSON is utilized over CSV in production because it supports nested arrays—allowing multiple allergens or ingredients to be tied to a single dish object—and parses natively into Python dictionaries for instant, real-time filtering when a user executes a search.
+
+## Deployed using Vercel
+
+The link: https://food-recommendation-system-project-seven.vercel.app/
